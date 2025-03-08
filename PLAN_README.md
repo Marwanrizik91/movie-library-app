@@ -24,3 +24,26 @@
 
 -----------
 
+# Frontend (React) Implementation
+
+
+
+### RTK Query Setup: 
+Create an API slice using createApi and fetchBaseQuery.
+
+### Components:
+- MovieList.tsx: Displays a list of movies.
+- Search.tsx: Search input using React Hook Form.
+- Filter.tsx: Filter by genre using React Hook Form.
+- MovieCard.tsx: Displays a single movie card.
+
+### State Management:
+Use RTK Query hooks (e.g., useGetMoviesQuery, useSearchMoviesQuery) to fetch and cache data.
+Use Redux slices to manage local UI state (e.g., loading indicators, error messages).
+
+### Styling:
+Use Styled Components or MUI components for styling.
+Implement responsive design using media queries.
+
+### Routing:
+React Router for navigation.
