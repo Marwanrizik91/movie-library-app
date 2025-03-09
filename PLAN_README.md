@@ -32,7 +32,7 @@ _Considering the benefits of using Nestjs over Expressjs, such as better native 
 
 ### RTK Query Setup:
 
-- [ ] Create an API slice using createApi and fetchBaseQuery.
+- [x] Create an API slice using createApi and fetchBaseQuery.
 
 ### Components:
 
