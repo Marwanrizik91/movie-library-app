@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { Genre, Movie } from "../types/movieTypes";
+import { PaginatedResponse } from "../types/commonTypes";
 
 const DEVELOPMENT_BASE_URL = "http://localhost:3000/api/movies";
 const PRODUCTION_BASE_URL =
@@ -9,35 +11,7 @@ const BASE_URL =
     ? process.env.REACT_APP_API_BASE_URL || PRODUCTION_BASE_URL
     : DEVELOPMENT_BASE_URL;
 
-export interface Movie {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[] | null;
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
-interface Genre {
-  id: number;
-  name: string;
-}
-
-interface PaginatedResponse<T> {
-  page: number;
-  results: T[];
-  total_pages: number;
-  total_results: number;
-}
-
-export interface MoviesQueryParams {
+interface MoviesQueryParams {
   page?: number;
 }
 
