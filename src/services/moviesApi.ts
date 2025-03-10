@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const DEVELOPMENT_BASE_URL = "http://localhost:3000/api/movies";
-const PRODUCTION_BASE_URL = ""; // Replace with the actual production URL
+const PRODUCTION_BASE_URL =
+  "https://movie-library-api-i5f2.onrender.com/api/movies";
 
 const BASE_URL =
   process.env.NODE_ENV === "production"
@@ -36,7 +37,7 @@ interface PaginatedResponse<T> {
   total_results: number;
 }
 
-interface MoviesQueryParams {
+export interface MoviesQueryParams {
   page?: number;
 }
 
