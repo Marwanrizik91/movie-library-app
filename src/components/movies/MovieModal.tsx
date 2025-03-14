@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Box, Button, Modal, useTheme } from "@mui/material";
-import { Movie } from "../../types/movieTypes";
+import { Movie } from "../../types/movie.types";
 import { X } from "lucide-react";
 import { css, keyframes } from "@emotion/react";
 import MovieDetails from "./MovieDetails";

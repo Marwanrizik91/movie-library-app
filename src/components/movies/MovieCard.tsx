@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Card, CardMedia } from "@mui/material";
-import { Movie } from "../../types/movieTypes";
+import { Movie } from "../../types/movie.types";
 import MovieModal from "./MovieModal";
 import { ANIMATION_LENGTH, TMDB_IMAGE_URL } from "../../utils/constants";
 

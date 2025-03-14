@@ -1,9 +1,9 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense } from "react";
 import { useGetMoviesQuery } from "../../services/moviesApi";
 import { Grid2, CircularProgress } from "@mui/material";
-import { MoviesQueryParams } from "../../types/commonTypes";
+import { MoviesQueryParams } from "../../types/api.types";
 import Pagination from "../Pagination";
-import { Movie } from "../../types/movieTypes";
+import { Movie } from "../../types/movie.types";
 import MovieSkeleton from "../common/Skeleton/MovieSkeleton";
 import ErrorBoundary from "../common/ErrorBoundary";
 import { GRID_SIZES, SKELETON_COUNT } from "../../utils/constants";

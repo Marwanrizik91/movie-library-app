@@ -1,5 +1,5 @@
 import { Box, Button, Typography, useTheme } from "@mui/material";
-import { Movie } from "../../types/movieTypes";
+import { Movie } from "../../types/movie.types";
 import { useMemo } from "react";
 import { ChevronRight } from "lucide-react";
 import styled from "@emotion/styled";

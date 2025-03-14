@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Genre, Movie } from "../types/movieTypes";
-import { MoviesQueryParams, PaginatedResponse } from "../types/commonTypes";
+import { Genre, Movie } from "../types/movie.types";
+import { MoviesQueryParams, PaginatedResponse } from "../types/api.types";
 
 const DEVELOPMENT_BASE_URL = "http://localhost:3000/api/movies";
 const PRODUCTION_BASE_URL =
