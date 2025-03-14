@@ -6,12 +6,15 @@ import { store } from "./store.ts";
 import "./index.css";
 import { ThemeProvider } from "@mui/material";
 import theme from "./theme.ts";
+import ErrorBoundary from "./components/common/ErrorBoundary.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <App />
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
       </ThemeProvider>
     </Provider>
   </StrictMode>

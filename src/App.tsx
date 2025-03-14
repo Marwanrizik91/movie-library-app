@@ -1,13 +1,15 @@
-import './App.css';
-import MovieList from './components/MovieList';
+import "./App.css";
+import MovieList from "./components/movies/MovieList";
+import ErrorBoundary from "./components/common/ErrorBoundary";
 
 function App() {
-
   return (
     <>
-      <MovieList />
+      <ErrorBoundary>
+        <MovieList />
+      </ErrorBoundary>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
