@@ -20,6 +20,9 @@ const ANIMATION_LENGTH = 300; //ms
 const StyledCard = styled(Card)`
   margin: 1rem auto;
   position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 450px;
   &:hover {
     transform: translateY(-2px);
   }
