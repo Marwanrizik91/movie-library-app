@@ -4,12 +4,12 @@ import { useMemo } from "react";
 import { ChevronRight } from "lucide-react";
 import styled from "@emotion/styled";
 import { Theme } from "@mui/system";
-import { TMDB_IMAGE_URL } from "../../utils/constants";
+import { getImageUrl } from "../../utils/helpers";
 
 const MovieDetails = ({ movie }: { movie: Movie }) => {
   const theme = useTheme();
   const imageUrl = useMemo(
-    () => `${TMDB_IMAGE_URL}${movie.poster_path}`,
+    () => getImageUrl(movie.poster_path),
     [movie.poster_path]
   );
   const tags = useMemo(

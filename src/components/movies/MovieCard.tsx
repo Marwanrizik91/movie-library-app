@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import styled from "@emotion/styled";
 import { Card, CardMedia } from "@mui/material";
 import { Movie } from "../../types/movie.types";
 import MovieModal from "./MovieModal";
-import { ANIMATION_LENGTH, TMDB_IMAGE_URL } from "../../utils/constants";
+import { ANIMATION_LENGTH } from "../../utils/constants";
+import { getImageUrl } from "../../utils/helpers";
 
 const StyledCard = styled(Card)`
   margin: 1rem auto;
@@ -29,7 +30,10 @@ interface MovieCardProps {
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
-  const imageUrl = `${TMDB_IMAGE_URL}${movie.poster_path}`;
+  const imageUrl = useMemo(
+    () => getImageUrl(movie.poster_path),
+    [movie.poster_path]
+  );
   const [showOverview, setShowOverview] = useState(false);
   const [closing, setClosing] = useState(false);
 
