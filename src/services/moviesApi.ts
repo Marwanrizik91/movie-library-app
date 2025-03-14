@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Genre, Movie } from "../types/movieTypes";
-import { PaginatedResponse } from "../types/commonTypes";
+import { MoviesQueryParams, PaginatedResponse } from "../types/commonTypes";
 
 const DEVELOPMENT_BASE_URL = "http://localhost:3000/api/movies";
 const PRODUCTION_BASE_URL =
@@ -10,10 +10,6 @@ const BASE_URL =
   process.env.NODE_ENV === "production"
     ? process.env.REACT_APP_API_BASE_URL || PRODUCTION_BASE_URL
     : DEVELOPMENT_BASE_URL;
-
-interface MoviesQueryParams {
-  page?: number;
-}
 
 interface SearchMoviesQueryParams extends MoviesQueryParams {
   query: string;

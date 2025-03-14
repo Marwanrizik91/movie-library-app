@@ -36,15 +36,15 @@ _Considering the benefits of using Nestjs over Expressjs, such as better native 
 
 ### Components:
 
-- [ ] MovieList.tsx: Displays a list of movies.
+- [x] MovieList.tsx: Displays a list of movies.
+- [x] MovieCard.tsx: Displays a single movie card.
 - [ ] Search.tsx: Search input using React Hook Form.
 - [ ] Filter.tsx: Filter by genre using React Hook Form.
-- [ ] MovieCard.tsx: Displays a single movie card.
 
 ### State Management:
 
-- [ ] Use RTK Query hooks (e.g., useGetMoviesQuery, useSearchMoviesQuery) to fetch and cache data.
-- [ ] Use Redux slices to manage local UI state (e.g., loading indicators, error messages).
+- [x] Use RTK Query hooks (e.g., useGetMoviesQuery, useSearchMoviesQuery) to fetch and cache data.
+- [x] Use Redux slices to manage local UI state (e.g., loading indicators, error messages).
 
 ### Styling:
 

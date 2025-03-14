@@ -32,8 +32,8 @@ const colors = {
     contrastText: "rgba(0, 0, 0, 0.87)",
   },
   info: {
-    main: "#0e788a",
-    light: "#5ac3d3",
+    main: "#333",
+    light: "#444",
     contrastText: "#fff",
   },
   success: {
@@ -46,7 +46,7 @@ const colors = {
 const typography = {
   fontFamily: ["Roboto", "sans-serif"].join(","),
   h4: {
-    fontSize: "2rem",
+    fontSize: "2.5rem",
     fontWeight: 700,
   },
   h5: {
