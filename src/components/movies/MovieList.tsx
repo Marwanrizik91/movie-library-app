@@ -7,16 +7,18 @@ import { Movie } from "../../types/movieTypes";
 import MovieSkeleton from "../common/Skeleton/MovieSkeleton";
 import ErrorBoundary from "../common/ErrorBoundary";
 import { GRID_SIZES, SKELETON_COUNT } from "../../utils/constants";
+import { useUrlParams } from "../../hooks/useUrlParams";
 
 const LazyMovieCard = lazy(() => import("./MovieCard"));
 
 const MovieList: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const { getParam, setParam } = useUrlParams();
+  const currentPage = parseInt(getParam("page", "1"));
   const queryParams: MoviesQueryParams = { page: currentPage };
   const { data, isLoading, isError } = useGetMoviesQuery(queryParams);
 
   const handlePageChange = (page: number) => {
-    setCurrentPage(page);
+    setParam("page", page.toString());
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
