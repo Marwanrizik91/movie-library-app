@@ -11,5 +11,10 @@ export const useUrlParams = () => {
     setSearchParams(searchParams);
   };
 
-  return { getParam, setParam };
+  const deleteParam = (key: string) => {
+    searchParams.delete(key);
+    setSearchParams(searchParams);
+  };
+
+  return { getParam, setParam, deleteParam };
 };

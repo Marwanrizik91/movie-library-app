@@ -8,13 +8,17 @@ import MovieSkeleton from "../common/Skeleton/MovieSkeleton";
 import ErrorBoundary from "../common/ErrorBoundary";
 import { GRID_SIZES, SKELETON_COUNT } from "../../utils/constants";
 import { useUrlParams } from "../../hooks/useUrlParams";
+import SearchBar from "./SearchBar";
 
 const LazyMovieCard = lazy(() => import("./MovieCard"));
 
 const MovieList: React.FC = () => {
   const { getParam, setParam } = useUrlParams();
   const currentPage = parseInt(getParam("page", "1"));
-  const queryParams: MoviesQueryParams = { page: currentPage };
+  const queryParams: MoviesQueryParams = {
+    page: currentPage,
+    query: getParam("query", ""),
+  };
   const { data, isLoading, isError } = useGetMoviesQuery(queryParams);
 
   const handlePageChange = (page: number) => {
@@ -39,6 +43,7 @@ const MovieList: React.FC = () => {
 
   return (
     <div>
+      <SearchBar />
       <Grid2 container spacing={2}>
         <Suspense fallback={<CircularProgress />}>
           <ErrorBoundary>
@@ -50,11 +55,13 @@ const MovieList: React.FC = () => {
           </ErrorBoundary>
         </Suspense>
       </Grid2>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={data.total_pages}
-        onPageChange={handlePageChange}
-      />
+      {data.total_pages > 1 ? (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={data.total_pages}
+          onPageChange={handlePageChange}
+        />
+      ) : null}
     </div>
   );
 };
