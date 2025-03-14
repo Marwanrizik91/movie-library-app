@@ -11,10 +11,6 @@ const BASE_URL =
     ? process.env.REACT_APP_API_BASE_URL || PRODUCTION_BASE_URL
     : DEVELOPMENT_BASE_URL;
 
-interface SearchMoviesQueryParams extends MoviesQueryParams {
-  query: string;
-}
-
 interface MoviesByGenreQueryParams extends MoviesQueryParams {
   genreId: string;
 }
@@ -25,19 +21,9 @@ export const moviesApi = createApi({
   endpoints: (builder) => ({
     // Get Paginated movies response
     getMovies: builder.query<PaginatedResponse<Movie>, MoviesQueryParams>({
-      query: ({ page = 1 }) => ({
-        url: "",
-        params: { page },
-      }),
-    }),
-    // Get Paginated movies response based on search query
-    searchMovies: builder.query<
-      PaginatedResponse<Movie>,
-      SearchMoviesQueryParams
-    >({
-      query: ({ query, page = 1 }) => ({
-        url: "search",
-        params: { query, page },
+      query: ({ page = 1, query = "" }) => ({
+        url: query ? "search" : "",
+        params: { page, query },
       }),
     }),
     // Get all available movies genres
@@ -59,7 +45,6 @@ export const moviesApi = createApi({
 
 export const {
   useGetMoviesQuery,
-  useSearchMoviesQuery,
   useGetGenresQuery,
   useGetMoviesByGenreQuery,
 } = moviesApi;
