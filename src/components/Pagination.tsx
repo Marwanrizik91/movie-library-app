@@ -17,7 +17,7 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <Stack alignItems="center" spacing={2} sx={{ marginTop: "2rem" }}>
+    <Stack alignItems="center" spacing={1} sx={{ marginTop: "3rem" }}>
       <MUIPagination
         count={totalPages}
         page={currentPage}

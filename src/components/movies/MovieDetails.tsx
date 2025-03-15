@@ -74,6 +74,7 @@ const ImageContainer = styled(Box)<{ theme: Theme }>`
     position: absolute;
     inset: 0px;
     z-index: 1;
+    border-radius: 10px;
     background: ${({ theme }) => {
       const backgroundColor = theme.palette.background.default;
       return `linear-gradient(
