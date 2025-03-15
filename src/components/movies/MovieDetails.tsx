@@ -1,9 +1,7 @@
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import { Box, Button, styled, Typography, useTheme } from "@mui/material";
 import { Movie } from "../../types/movie.types";
 import { useMemo } from "react";
 import { ChevronRight } from "lucide-react";
-import styled from "@emotion/styled";
-import { Theme } from "@mui/system";
 import { getImageUrl } from "../../utils/helpers";
 
 const MovieDetails = ({ movie }: { movie: Movie }) => {
@@ -28,7 +26,7 @@ const MovieDetails = ({ movie }: { movie: Movie }) => {
   );
 
   return (
-    <ImageContainer sx={{ backgroundImage: `url(${imageUrl})` }} theme={theme}>
+    <ImageContainer sx={{ backgroundImage: `url(${imageUrl})` }}>
       <DetailsContainer>
         <Typography variant="h4">{movie.title}</Typography>
         <TagsContainer>
@@ -61,7 +59,7 @@ const MovieDetails = ({ movie }: { movie: Movie }) => {
   );
 };
 
-const ImageContainer = styled(Box)<{ theme: Theme }>`
+const ImageContainer = styled(Box)`
   border-radius: inherit;
   width: 100%;
   height: 100%;
@@ -98,7 +96,7 @@ const DetailsContainer = styled(Box)`
   gap: 15px;
 `;
 
-const TagsContainer = styled.div`
+const TagsContainer = styled("div")`
   display: flex;
   gap: 10px;
 `;

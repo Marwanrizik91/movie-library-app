@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
-import styled from "@emotion/styled";
-import { Card, CardMedia } from "@mui/material";
+import { Card, CardMedia, styled } from "@mui/material";
 import { Movie } from "../../types/movie.types";
 import MovieModal from "./MovieModal";
 import { ANIMATION_LENGTH } from "../../utils/constants";
