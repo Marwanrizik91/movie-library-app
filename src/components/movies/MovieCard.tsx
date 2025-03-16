@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Card, CardMedia, styled } from "@mui/material";
+import { Box, Card, CardMedia, styled, Typography } from "@mui/material";
 import { Movie } from "../../types/movie.types";
 import MovieModal from "./MovieModal";
 import { ANIMATION_LENGTH } from "../../utils/constants";
@@ -23,6 +23,18 @@ const StyledCardMedia = styled(CardMedia)`
   background-color: lightgray;
   cursor: pointer;
 ` as typeof CardMedia;
+
+const ImageFallbackBox = styled(Box)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  padding-top: 1rem;
+`;
 
 interface MovieCardProps {
   movie: Movie;
@@ -52,13 +64,20 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
         isClosing={closing}
         onClose={handleClose}
       />
-      <StyledCard onClick={() => setShowOverview(true)}>
+      <StyledCard tabIndex={0} onClick={() => setShowOverview(true)}>
         <StyledCardMedia
           loading="lazy"
           component="img"
           image={imageUrl}
           alt={movie.title}
         />
+        <ImageFallbackBox>
+          {!movie.poster_path && (
+            <Typography color="primary.light" variant="h3" component="h2">
+              {movie.title}
+            </Typography>
+          )}
+        </ImageFallbackBox>
       </StyledCard>
     </>
   );

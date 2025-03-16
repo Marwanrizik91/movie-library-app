@@ -4,61 +4,6 @@ import { useMemo } from "react";
 import { ChevronRight } from "lucide-react";
 import { getImageUrl } from "../../utils/helpers";
 
-const MovieDetails = ({ movie }: { movie: Movie }) => {
-  const theme = useTheme();
-  const imageUrl = useMemo(
-    () => getImageUrl(movie.poster_path),
-    [movie.poster_path]
-  );
-  const tags = useMemo(
-    () => [
-      movie.release_date.split("-")[0],
-      movie.vote_average ? movie.vote_average.toFixed(1) : "No Rating",
-      movie.adult ? "Adult" : "All Ages",
-      movie.original_language.toUpperCase(),
-    ],
-    [
-      movie.release_date,
-      movie.vote_average,
-      movie.adult,
-      movie.original_language,
-    ]
-  );
-
-  return (
-    <ImageContainer sx={{ backgroundImage: `url(${imageUrl})` }}>
-      <DetailsContainer>
-        <Typography variant="h4">{movie.title}</Typography>
-        <TagsContainer>
-          {tags.map((tag, index) => (
-            <Tag
-              sx={{
-                backgroundColor: theme.palette.info.main,
-                color: theme.palette.info.contrastText,
-              }}
-              key={index}
-            >
-              {tag}
-            </Tag>
-          ))}
-        </TagsContainer>
-        <Typography
-          overflow={"auto"}
-          align="center"
-          variant="body1"
-          color="inherit"
-        >
-          {movie.overview}
-        </Typography>
-        <WatchNowButton>
-          Watch Now
-          <ChevronRight size={20} />
-        </WatchNowButton>
-      </DetailsContainer>
-    </ImageContainer>
-  );
-};
-
 const ImageContainer = styled(Box)`
   border-radius: inherit;
   width: 100%;
@@ -67,6 +12,7 @@ const ImageContainer = styled(Box)`
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
+  aria-hidden: "true";
   :after {
     content: "";
     position: absolute;
@@ -96,12 +42,15 @@ const DetailsContainer = styled(Box)`
   gap: 15px;
 `;
 
-const TagsContainer = styled("div")`
+const TagsContainer = styled("ul")`
   display: flex;
   gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 `;
 
-const Tag = styled(Box)`
+const Tag = styled("li")`
   display: inline-block;
   padding: 5px 10px;
   border-radius: 5px;
@@ -114,5 +63,78 @@ const WatchNowButton = styled(Button)`
   align-self: center;
   margin-inline-start: 10px;
 `;
+
+const MovieDetails = ({ movie }: { movie: Movie }) => {
+  const theme = useTheme();
+  const imageUrl = useMemo(
+    () => getImageUrl(movie.poster_path),
+    [movie.poster_path]
+  );
+  const tags = useMemo(
+    () => [
+      movie.release_date.split("-")[0],
+      movie.vote_average ? movie.vote_average.toFixed(1) : "No Rating",
+      movie.adult ? "Adult" : "All Ages",
+      movie.original_language.toUpperCase(),
+    ],
+    [
+      movie.release_date,
+      movie.vote_average,
+      movie.adult,
+      movie.original_language,
+    ]
+  );
+
+  return (
+    <ImageContainer
+      sx={{ backgroundImage: `url(${imageUrl})` }}
+      role="article"
+      aria-label={`Movie details for ${movie.title}`}
+    >
+      <DetailsContainer>
+        <Typography variant="h4" component="h2" tabIndex={0}>
+          {movie.title}
+        </Typography>
+        <TagsContainer role="list" aria-label="Movie information tags">
+          {tags.map((tag, index) => (
+            <Tag
+              sx={{
+                backgroundColor: theme.palette.info.main,
+                color: theme.palette.info.contrastText,
+              }}
+              key={index}
+              role="listitem"
+              tabIndex={0}
+            >
+              {tag}
+            </Tag>
+          ))}
+        </TagsContainer>
+        <Typography
+          overflow={"auto"}
+          align="center"
+          variant="body1"
+          color="inherit"
+          tabIndex={0}
+          aria-label="Movie overview"
+        >
+          {movie.overview}
+        </Typography>
+        <WatchNowButton
+          aria-label="Watch movie"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              e.currentTarget.click();
+            }
+          }}
+        >
+          Watch Now
+          <ChevronRight size={20} aria-hidden="true" />
+        </WatchNowButton>
+      </DetailsContainer>
+    </ImageContainer>
+  );
+};
 
 export default MovieDetails;
