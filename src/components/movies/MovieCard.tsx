@@ -11,6 +11,7 @@ const StyledCard = styled(Card)`
   width: 100%;
   height: 100%;
   min-height: 450px;
+  cursor: pointer;
   &:hover {
     transform: translateY(-2px);
   }
