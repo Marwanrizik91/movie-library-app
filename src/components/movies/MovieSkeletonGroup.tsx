@@ -1,14 +1,17 @@
 import { Grid2 } from "@mui/material";
-import React from "react";
-import MovieSkeleton from "../common/Skeleton/MovieSkeleton";
+import React, { lazy } from "react";
 import { GRID_SIZES, SKELETON_COUNT } from "../../utils/constants";
+
+const LazyMovieSkeleton = lazy(
+  () => import("../common/Skeleton/MovieSkeleton")
+);
 
 const MovieSkeletonGroup: React.FC = () => {
   return (
     <Grid2 container spacing={2}>
       {[...Array(SKELETON_COUNT)].map((_, index) => (
         <Grid2 size={GRID_SIZES} key={index}>
-          <MovieSkeleton />
+          <LazyMovieSkeleton />
         </Grid2>
       ))}
     </Grid2>
