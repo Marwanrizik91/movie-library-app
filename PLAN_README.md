@@ -15,7 +15,7 @@ _Considering the benefits of using Nestjs over Expressjs, such as better native 
 
 - [x] List a number of movies.
 - [x] Search for a movie by title.
-- [ ] Filter movies by different genres.
+- [x] Filter movies by different genres.
 - [x] Responsive behaviour. Make sure the app gracefully scales down to a mobile view.
 
 ### Technologies
@@ -39,7 +39,7 @@ _Considering the benefits of using Nestjs over Expressjs, such as better native 
 - [x] MovieList.tsx: Displays a list of movies.
 - [x] MovieCard.tsx: Displays a single movie card.
 - [x] Search.tsx: Search input using React Hook Form.
-- [ ] Filter.tsx: Filter by genre using React Hook Form.
+- [x] Filter.tsx: Filter by genre using React Hook Form.
 
 ### State Management:
 
