@@ -1,5 +1,5 @@
 import { InputAdornment, styled, TextField, useTheme } from "@mui/material";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { debounce } from "lodash";
@@ -24,7 +24,7 @@ const SearchBar = () => {
   const theme = useTheme();
   const { getParam, setParam, deleteParam } = useUrlParams();
 
-  const { register, watch } = useForm<SearchFormInputs>({
+  const { register, watch, setValue } = useForm<SearchFormInputs>({
     defaultValues: {
       searchTerm: getParam("query", ""),
     },
@@ -39,6 +39,7 @@ const SearchBar = () => {
     } else {
       // Remove query parameter if empty
       deleteParam("query");
+      deleteParam("page");
     }
   }, 500);
 
@@ -52,17 +53,15 @@ const SearchBar = () => {
     };
   }, [watch]);
 
+  const handleSearchCancel = () => {
+    setValue("searchTerm", "");
+  };
+
   return (
     <>
       <TextField
-        fullWidth
         placeholder="Search movies..."
         color="secondary"
-        sx={{
-          marginBottom: 3,
-          backgroundColor: theme.palette.grey[900],
-        }}
-        variant="filled"
         {...register("searchTerm")}
         aria-label="Search for movies"
         slotProps={{
@@ -71,11 +70,21 @@ const SearchBar = () => {
             "aria-description": "Enter movie title to search",
             startAdornment: (
               <InputAdornment position="start">
-                <Search
-                  color={theme.palette.text.primary}
-                  size={20}
-                  aria-hidden="true"
-                />
+                {searchTerm ? (
+                  <X
+                    color={theme.palette.text.primary}
+                    size={20}
+                    cursor="pointer"
+                    onClick={handleSearchCancel}
+                    aria-label="Clear search"
+                  />
+                ) : (
+                  <Search
+                    color={theme.palette.text.primary}
+                    size={20}
+                    aria-hidden="true"
+                  />
+                )}
               </InputAdornment>
             ),
           },
