@@ -50,6 +50,14 @@ Before you begin, ensure you have the following installed:
     npm install  # or any other package manager you prefer
     ```
 
+    **(Optional) Enviroment variables:**
+
+    Create a .env file and add the following:
+
+    ```
+    VITE_API_BASE_URL = http://localhost:<backend-app-port>/api/movies
+    ```
+
     **Backend (NestJS):**
 
     ```bash
@@ -76,9 +84,9 @@ Before you begin, ensure you have the following installed:
     npm start  # or any other package manager you prefer
     ```
 
-    This will start the React development server on a specified port (usually 3001). Ensure this port is available. The application should now be accessible in your browser at `http://localhost:5173`.
+    This will start the React development server on a specified port. Ensure this port is available. The application should now be accessible in your browser at `http://localhost:5173`.
 
-    Or you can change the port under vire.config.ts
+    Or you can change the port under vite.config.ts
 
     ```
     export default defineConfig({
@@ -107,3 +115,4 @@ The application communicates with a NestJS backend. Ensure the backend is runnin
 ## Troubleshooting
 
 - If you encounter issues, double-check that both the frontend and backend servers are running correctly.
+- Enure the ports configurations are matching between the two apps.
