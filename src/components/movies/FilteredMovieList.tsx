@@ -6,6 +6,7 @@ import { useUrlParams } from "../../hooks/useUrlParams";
 import MovieList from "./MovieList";
 import { useParams } from "react-router-dom";
 import MovieSkeletonGroup from "./MovieSkeletonGroup";
+import ErrorDisplay from "../common/ErrorDisplay";
 
 const FilteredMovieList: React.FC = () => {
   const { id } = useParams();
@@ -15,18 +16,20 @@ const FilteredMovieList: React.FC = () => {
     page: currentPage,
     genreId: id || "",
   };
-  const { data, isLoading, isError } = useGetMoviesByGenreQuery(queryParams);
+  const { data, isFetching, isError, refetch } =
+    useGetMoviesByGenreQuery(queryParams);
 
   const handlePageChange = (page: number) => {
     setParam("page", page.toString());
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (isLoading) {
+  if (isFetching) {
     return <MovieSkeletonGroup />;
   }
 
-  if (isError) return <p>Error loading movies.</p>;
+  if (isError) return <ErrorDisplay onRetry={() => refetch()} />;
+
   if (!data) return <p>No movies found.</p>;
 
   return (
@@ -37,6 +40,7 @@ const FilteredMovieList: React.FC = () => {
           currentPage={currentPage}
           totalPages={data.total_pages}
           onPageChange={handlePageChange}
+          aria-label="Pagination"
         />
       ) : null}
     </div>

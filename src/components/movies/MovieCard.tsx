@@ -68,6 +68,8 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
       <StyledCard
         role="article"
         aria-labelledby={`movie-${movie.id}-title`}
+        ria-describedby={`movie-${movie.id}-desc`}
+        id={`movie-${movie.id}-title`}
         onClick={() => setShowOverview(true)}
         tabIndex={0}
         onKeyDown={(e) => {
@@ -82,6 +84,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
           component="img"
           image={imageUrl}
           alt={movie.title}
+          aria-describedby={`movie-${movie.id}-img-desc`}
         />
         <ImageFallbackBox>
           {!movie.poster_path && (

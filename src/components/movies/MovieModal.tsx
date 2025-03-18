@@ -45,7 +45,12 @@ const MovieModal: React.FC<MovieModalProps> = ({
   const theme = useTheme();
 
   return (
-    <StyledModal open={isOpen} onClose={onClose}>
+    <StyledModal
+      role="dialog"
+      aria-modal="true"
+      open={isOpen}
+      onClose={onClose}
+    >
       <OverviewContainer
         sx={{
           border: `1px solid ${theme.palette.primary.main}`,

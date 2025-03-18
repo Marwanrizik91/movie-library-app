@@ -4,15 +4,18 @@ import { useMemo } from "react";
 import { ChevronRight } from "lucide-react";
 import { getImageUrl } from "../../utils/helpers";
 
+enum ContainerMetrics {
+  Padding = 15,
+  Gap = 15,
+}
+
 const ImageContainer = styled(Box)`
   border-radius: inherit;
   width: 100%;
   height: 100%;
   position: relative;
   background-size: cover;
-  background-position: center top;
   background-repeat: no-repeat;
-  aria-hidden: "true";
   :after {
     content: "";
     position: absolute;
@@ -37,14 +40,15 @@ const DetailsContainer = styled(Box)`
   justify-content: space-between;
   position: absolute;
   bottom: 0;
-  padding: 15px;
+  padding: ${ContainerMetrics.Padding}px;
   z-index: 4;
-  gap: 15px;
+  gap: ${ContainerMetrics.Gap}px;
+  width: calc(100% - (${ContainerMetrics.Padding}px * 2));
 `;
 
 const TagsContainer = styled("ul")`
   display: flex;
-  gap: 10px;
+  gap: ${ContainerMetrics.Gap}px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -73,7 +77,7 @@ const MovieDetails = ({ movie }: { movie: Movie }) => {
   const tags = useMemo(
     () => [
       movie.release_date.split("-")[0],
-      movie.vote_average ? movie.vote_average.toFixed(1) : "No Rating",
+      movie.vote_average ? `${movie.vote_average.toFixed(1)}/10` : "No Rating",
       movie.adult ? "Adult" : "All Ages",
       movie.original_language.toUpperCase(),
     ],

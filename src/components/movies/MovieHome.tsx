@@ -5,6 +5,7 @@ import Pagination from "../Pagination";
 import { useUrlParams } from "../../hooks/useUrlParams";
 import MovieList from "./MovieList";
 import MovieSkeletonGroup from "./MovieSkeletonGroup";
+import ErrorDisplay from "../common/ErrorDisplay";
 
 const MovieHome: React.FC = () => {
   const { getParam, setParam } = useUrlParams();
@@ -13,18 +14,19 @@ const MovieHome: React.FC = () => {
     page: currentPage,
     query: getParam("query", ""),
   };
-  const { data, isLoading, isError } = useGetMoviesQuery(queryParams);
+  const { data, isFetching, isError, refetch } = useGetMoviesQuery(queryParams);
 
   const handlePageChange = (page: number) => {
     setParam("page", page.toString());
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (isLoading) {
+  if (isFetching) {
     return <MovieSkeletonGroup />;
   }
 
-  if (isError) return <p>Error loading movies.</p>;
+  if (isError) return <ErrorDisplay onRetry={() => refetch()} />;
+
   if (!data) return <p>No movies found.</p>;
 
   return (

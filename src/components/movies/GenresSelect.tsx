@@ -20,6 +20,10 @@ const StyledLi = styled("li")`
   border-radius: 5px;
   font-size: 1.4rem;
   cursor: pointer;
+  padding: 0 10px;
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.primary.main};
+  }
 `;
 
 const StyledModal = styled(Modal)`
@@ -60,12 +64,12 @@ const GenresSelect: React.FC = () => {
   const match = useMatch("/genre/:id");
   const id = match?.params?.id;
 
-  const { data, isLoading, isError, refetch } = useGetGenresQuery();
+  const { data, isFetching, isError, refetch } = useGetGenresQuery();
   const selectedGenre = useMemo(() => {
     return id ? data?.find((genre) => genre.id === parseInt(id)) : undefined;
   }, [data, id]);
 
-  if (isLoading) {
+  if (isFetching) {
     return <CircularProgress sx={{ m: 1 }} color="secondary" />;
   }
   if (isError) {
@@ -91,7 +95,7 @@ const GenresSelect: React.FC = () => {
       {selectedGenre && (
         <Button
           onClick={clearSelection}
-          sx={{ m: 2 }}
+          sx={{ m: 1 }}
           variant="contained"
           endIcon={<X />}
           size="small"
@@ -101,13 +105,18 @@ const GenresSelect: React.FC = () => {
       )}
       <Button
         onClick={handleOpen}
-        sx={{ m: 2 }}
+        sx={{ m: 1 }}
         variant="outlined"
         endIcon={<ChevronDown />}
       >
         {selectedGenre?.name || "Genre"}
       </Button>
-      <StyledModal open={open} onClose={handleClose}>
+      <StyledModal
+        role="dialog"
+        aria-modal="true"
+        open={open}
+        onClose={handleClose}
+      >
         <div ref={modalRef} tabIndex={-1}>
           <CloseButton onClick={handleClose}>
             <X />
@@ -118,6 +127,7 @@ const GenresSelect: React.FC = () => {
                 onClick={() => handleGenreSelect(genre)}
                 key={genre.id}
                 tabIndex={0}
+                role="button"
               >
                 {genre.name}
               </StyledLi>
