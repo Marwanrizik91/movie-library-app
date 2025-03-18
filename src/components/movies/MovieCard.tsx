@@ -65,7 +65,18 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
         isClosing={closing}
         onClose={handleClose}
       />
-      <StyledCard tabIndex={0} onClick={() => setShowOverview(true)}>
+      <StyledCard
+        role="article"
+        aria-labelledby={`movie-${movie.id}-title`}
+        onClick={() => setShowOverview(true)}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setShowOverview(true);
+          }
+        }}
+      >
         <StyledCardMedia
           loading="lazy"
           component="img"
@@ -74,7 +85,12 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
         />
         <ImageFallbackBox>
           {!movie.poster_path && (
-            <Typography color="primary.light" variant="h3" component="h2">
+            <Typography
+              id={`movie-${movie.id}-title`}
+              color="primary.light"
+              variant="h3"
+              component="h2"
+            >
               {movie.title}
             </Typography>
           )}
