@@ -23,7 +23,14 @@ class ErrorBoundary extends Component<Props, State> {
 
   public render() {
     if (this.state.hasError) {
-      return <h1>Sorry.. there was an error</h1>;
+      return (
+        <div role="alert" className="error-fallback">
+          <h1>Something went wrong</h1>
+          <button onClick={() => window.location.reload()}>
+            Reload Application
+          </button>
+        </div>
+      );
     }
 
     return this.props.children;

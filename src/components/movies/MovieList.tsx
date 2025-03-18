@@ -1,10 +1,11 @@
 import { CircularProgress, Grid2 } from "@mui/material";
-import React, { lazy, Suspense } from "react";
+import React, { lazy, memo, Suspense } from "react";
 import ErrorBoundary from "../common/ErrorBoundary";
 import { Movie } from "../../types/movie.types";
 import { GRID_SIZES } from "../../utils/constants";
 
 const LazyMovieCard = lazy(() => import("./MovieCard"));
+const MemoizedMovieCard = memo(LazyMovieCard);
 
 interface MovieListProps {
   movies: Movie[];
@@ -21,7 +22,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies }) => {
           <ErrorBoundary>
             {movies.map((movie: Movie) => (
               <Grid2 size={GRID_SIZES} key={movie.id}>
-                <LazyMovieCard movie={movie} />
+                <MemoizedMovieCard movie={movie} />
               </Grid2>
             ))}
           </ErrorBoundary>

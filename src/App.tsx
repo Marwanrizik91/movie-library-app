@@ -1,5 +1,4 @@
 import "./App.css";
-import MovieHome from "./components/movies/MovieHome";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 import {
   Link,
@@ -9,11 +8,13 @@ import {
   useLocation,
 } from "react-router-dom";
 import { AppBar, styled, Toolbar, Typography } from "@mui/material";
-import {
-  FilteredMovieList,
-  GenresSelect,
-  SearchBar,
-} from "./components/movies";
+import { GenresSelect, SearchBar } from "./components/movies";
+import { lazy } from "react";
+
+const MovieHome = lazy(() => import("./components/movies/MovieHome"));
+const FilteredMovieList = lazy(
+  () => import("./components/movies/FilteredMovieList")
+);
 
 const StyledLink = styled(Link)`
   text-decoration: none;
