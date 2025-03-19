@@ -1,7 +1,17 @@
 # General Comments
 
-- The App is deployed in GH pages [https://marwanrizik91.github.io/movie-library-app/](<(https://marwanrizik91.github.io/movie-library-app/)>)
+- The App is deployed on GH pages [https://marwanrizik91.github.io/movie-library-app/](<(https://marwanrizik91.github.io/movie-library-app/)>)
 - The backend is deployed on Render free plan, and it takes some time to load the data the first time(15s).
+- Since the app is deployed on GH pages the base url should always start with
+  ```
+  "/movie-library-app/"
+  ```
+  hence the base config in vite.config.ts
+  ```
+  base: process.env.NODE_ENV === "production" ? "/movie-library-app/" : "/",
+  ```
+  and the VITE_BASE_URL in .env file.
+- The app is fully responsive and works on all devices.
 
 # Tech Stack Decisions
 
