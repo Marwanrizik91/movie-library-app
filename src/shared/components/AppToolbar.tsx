@@ -1,20 +1,9 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, styled } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import { AppBar, Toolbar, styled } from "@mui/material";
+import { useLocation } from "react-router-dom";
 import { SearchBar } from "../../features/search/components";
 import { GenresSelect } from "../../features/genres/components";
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: inherit; /* Or specify a color */
-`;
-
-const StyledTypography = styled(Typography)`
-  flex-grow: 1;
-  @media (max-width: 600px) {
-    display: none;
-  }
-` as typeof Typography;
+import { Logo } from "./Logo";
 
 const StyledToolbar = styled(Toolbar)`
   @media (max-width: 600px) {
@@ -30,9 +19,7 @@ const AppToolbar: React.FC = () => {
   return (
     <AppBar position="static">
       <StyledToolbar>
-        <StyledTypography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <StyledLink to="/">Movie Library</StyledLink>
-        </StyledTypography>
+        <Logo />
         {!location.pathname.startsWith("/genre") && <SearchBar />}
         <GenresSelect />
       </StyledToolbar>
