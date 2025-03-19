@@ -2,8 +2,8 @@ import React from "react";
 import { Card, styled } from "@mui/material";
 import { Movie } from "../../types";
 import MovieModal from "../MovieModal";
-import { MovieImage } from "./components/MovieImage";
-import { useMovieModal } from "./hooks/useMovieModal";
+import { MovieImage } from "./MovieImage";
+import { useMovieModal } from "../../hooks/useMovieModal";
 
 const StyledCard = styled(Card)`
   margin: 1rem auto;

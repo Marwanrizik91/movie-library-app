@@ -3,7 +3,7 @@ import { Box, Button, Modal, styled } from "@mui/material";
 import { Movie } from "../types";
 import { X } from "lucide-react";
 import { css, keyframes } from "@emotion/react";
-import MovieDetails from "./MovieDetails";
+import MovieDetails from "./MovieDetails/MovieDetails";
 
 const ANIMATION_LENGTH = 300;
 

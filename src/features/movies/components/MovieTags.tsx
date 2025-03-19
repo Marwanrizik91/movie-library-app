@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import { MOVIE_DETAILS_METRICS } from "../constants/styles";
+import { MOVIE_DETAILS_METRICS } from "../constants/styles.constants";
 
 const TagsContainer = styled("ul")`
   display: flex;

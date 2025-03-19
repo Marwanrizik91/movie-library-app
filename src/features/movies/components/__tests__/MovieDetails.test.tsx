@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "@mui/material";
 import theme from "../../../../styles/theme";
-import MovieDetails from "../MovieDetails";
+import MovieDetails from "../MovieDetails/MovieDetails";
 
 // Mock dependencies
 jest.mock("../../utils/movieHelpers", () => ({

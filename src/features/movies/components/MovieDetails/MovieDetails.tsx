@@ -2,10 +2,10 @@ import { Box, styled, Typography } from "@mui/material";
 import { memo, useMemo } from "react";
 import { Movie } from "../../types";
 import { getImageUrl } from "../../utils/movieHelpers";
-import { MOVIE_DETAILS_METRICS } from "../../constants/styles";
+import { MOVIE_DETAILS_METRICS } from "../../constants/styles.constants";
 import { useMovieTags } from "../../hooks/useMovieTags";
 import { MovieTags } from "../MovieTags";
-import { WatchButton } from "./components/WatchButton";
+import { WatchButton } from "./WatchButton";
 
 const ImageContainer = styled(Box)`
   border-radius: inherit;

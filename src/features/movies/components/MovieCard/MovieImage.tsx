@@ -1,6 +1,6 @@
 import { CardMedia, Box, Typography, styled } from "@mui/material";
 import { useMemo } from "react";
-import { getImageUrl } from "../../../utils/movieHelpers";
+import { getImageUrl } from "../../utils/movieHelpers";
 
 const StyledCardMedia = styled(CardMedia)`
   width: 100%;

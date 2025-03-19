@@ -2,8 +2,8 @@ import React from "react";
 import { useUrlParams } from "../../../shared/hooks/useUrlParams";
 import { useParams } from "react-router-dom";
 import { useGetMoviesByGenreQuery } from "../services/moviesApi";
-import { MoviesByGenreParams } from "../types/moviesGenreApi.types";
 import PaginatedMovieResults from "../../../shared/components/PaginatedMovieResults";
+import { MoviesByGenreParams } from "../types";
 
 const FilteredMovieList: React.FC = () => {
   const { id } = useParams();

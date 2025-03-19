@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import { ChevronDown, RotateCw, X } from "lucide-react";
 import { useMatch, useNavigate } from "react-router-dom";
 import { useGetGenresQuery } from "../services/moviesApi";
-import { Genre } from "../types/moviesGenreApi.types";
+import { Genre } from "../types";
 
 const GenresContainer = styled("ul")`
   list-style: none;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ANIMATION_LENGTH } from "../../../constants";
+import { ANIMATION_LENGTH } from "../constants";
 
 export const useMovieModal = () => {
   const [showOverview, setShowOverview] = useState(false);

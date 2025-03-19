@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { API_CONFIG } from "../../../config/env";
 import { Movie, MoviesQueryParams } from "../../movies/types";
 import { PaginatedResponse } from "../../../shared/types/api.types";
-import { Genre } from "../types/moviesGenreApi.types";
+import { Genre } from "../types";
 
 const BASE_URL = API_CONFIG.baseUrl;
 
