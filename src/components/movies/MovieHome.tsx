@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetMoviesQuery } from "../../services/moviesApi";
 import { MoviesQueryParams } from "../../types/api.types";
-import Pagination from "../Pagination";
+import Pagination from "../common/Pagination";
 import { useUrlParams } from "../../hooks/useUrlParams";
 import MovieList from "./MovieList";
 import MovieSkeletonGroup from "./MovieSkeletonGroup";

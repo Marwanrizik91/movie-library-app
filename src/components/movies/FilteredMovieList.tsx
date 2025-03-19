@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetMoviesByGenreQuery } from "../../services/moviesApi";
 import { MoviesByGenreParams } from "../../types/api.types";
-import Pagination from "../Pagination";
+import Pagination from "../common/Pagination";
 import { useUrlParams } from "../../hooks/useUrlParams";
 import MovieList from "./MovieList";
 import { useParams } from "react-router-dom";
