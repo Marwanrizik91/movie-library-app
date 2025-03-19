@@ -56,6 +56,7 @@ Before you begin, ensure you have the following installed:
 
     ```
     VITE_API_BASE_URL = http://localhost:<backend-app-port>/api/movies
+    VITE_BASE_URL = /
     ```
 
     **Backend (NestJS):**
