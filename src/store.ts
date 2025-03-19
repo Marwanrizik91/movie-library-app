@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { moviesApi } from "./services/moviesApi";
+import { moviesApi } from "./features/movies/services/moviesApi";
+import { genresApi } from "./features/genres/services/moviesApi";
 
 export const store = configureStore({
   reducer: {
     [moviesApi.reducerPath]: moviesApi.reducer,
+    [genresApi.reducerPath]: genresApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(moviesApi.middleware),
+    getDefaultMiddleware().concat(moviesApi.middleware, genresApi.middleware),
 });
 
 // Export types for better type safety

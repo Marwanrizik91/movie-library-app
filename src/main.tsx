@@ -3,10 +3,10 @@ import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import { Provider } from "react-redux";
 import { store } from "./store.ts";
-import "./index.css";
+import "./styles/index.css";
 import { ThemeProvider } from "@mui/material";
-import theme from "./theme.ts";
-import ErrorBoundary from "./components/common/ErrorBoundary.tsx";
+import theme from "./styles/theme.ts";
+import ErrorBoundary from "./shared/components/ErrorBoundary.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

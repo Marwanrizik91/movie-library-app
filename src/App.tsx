@@ -1,14 +1,9 @@
-import "./App.css";
-import ErrorBoundary from "./components/common/ErrorBoundary";
+import "./styles/App.css";
+import ErrorBoundary from "./shared/components/ErrorBoundary";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-
-import { lazy } from "react";
-import AppToolbar from "./components/common/AppToolbar";
-
-const MovieHome = lazy(() => import("./components/movies/MovieHome"));
-const FilteredMovieList = lazy(
-  () => import("./components/movies/FilteredMovieList")
-);
+import AppToolbar from "./shared/components/AppToolbar";
+import { FilteredMovieList } from "./features/genres/components";
+import { MovieHome } from "./features/movies/components";
 
 const AppContent = () => {
   return (
