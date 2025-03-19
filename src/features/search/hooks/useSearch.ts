@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { debounce, get } from "lodash";
+import { debounce } from "lodash";
 import { useUrlParams } from "../../../shared/hooks/useUrlParams";
 
 interface SearchFormInputs {
