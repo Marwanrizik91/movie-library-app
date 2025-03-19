@@ -1,7 +1,7 @@
 import React from "react";
 import { useUrlParams } from "../../../shared/hooks/useUrlParams";
 import { useParams } from "react-router-dom";
-import { useGetMoviesByGenreQuery } from "../services/moviesApi";
+import { useGetMoviesByGenreQuery } from "../services/genresApi";
 import PaginatedMovieResults from "../../../shared/components/PaginatedMovieResults";
 import { MoviesByGenreParams } from "../types";
 

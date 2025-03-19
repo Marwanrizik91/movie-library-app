@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { moviesApi } from "./features/movies/services/moviesApi";
-import { genresApi } from "./features/genres/services/moviesApi";
+import { genresApi } from "./features/genres/services/genresApi";
 
 export const store = configureStore({
   reducer: {

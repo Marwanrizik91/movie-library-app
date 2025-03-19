@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useMatch, useNavigate } from "react-router-dom";
-import { useGetGenresQuery } from "../services/moviesApi";
+import { useGetGenresQuery } from "../services/genresApi";
 import { Genre } from "../types";
 
 export const useGenreSelection = () => {

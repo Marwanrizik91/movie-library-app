@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
-import { useGetGenresQuery } from "../../../services/moviesApi";
+import { useGetGenresQuery } from "../../../services/genresApi";
 import theme from "../../../../../styles/theme";
 import { GenresSelect } from "../..";
 
