@@ -61,3 +61,4 @@
 
 - I worked with less organized work flow in the beginning as I was more concerned about the functionality of the app, and to learn new technologies.
   Later on I organized the code structure and took care of performance, scalability and accesssibility.
+- Direct pushed to the main branch were done only when the app was working as expected, something i wouldn't do in a production application.
