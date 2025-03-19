@@ -24,4 +24,5 @@ dist-ssr
 *.sw?
 
 # Enviroment files
-*.env
+.env*
+!.env.example
