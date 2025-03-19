@@ -12,7 +12,7 @@ const ErrorMessage = styled(Typography)`
   margin: 1rem;
 `;
 
-export const GenresSelect = () => {
+const GenresSelect = () => {
   const [open, setOpen] = useState(false);
   const {
     genres,
@@ -66,3 +66,5 @@ export const GenresSelect = () => {
     </>
   );
 };
+
+export default GenresSelect;

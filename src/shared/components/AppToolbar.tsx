@@ -2,8 +2,8 @@ import React from "react";
 import { AppBar, Toolbar, styled } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { SearchBar } from "../../features/search/components";
-import { GenresSelect } from "../../features/genres/components";
 import { Logo } from "./Logo";
+import { GenresSelect } from "../../features/genres/components";
 
 const StyledToolbar = styled(Toolbar)`
   @media (max-width: 600px) {
