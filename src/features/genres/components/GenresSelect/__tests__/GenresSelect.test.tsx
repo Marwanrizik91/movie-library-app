@@ -6,7 +6,7 @@ import theme from "../../../../../styles/theme";
 import { GenresSelect } from "../..";
 
 // Update mock path to match import
-jest.mock("../../../services/moviesApi", () => ({
+jest.mock("../../../services/genresApi", () => ({
   useGetGenresQuery: jest.fn(),
 }));
 
