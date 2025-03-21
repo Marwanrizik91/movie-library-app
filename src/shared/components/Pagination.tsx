@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Pagination as MUIPagination, Stack } from "@mui/material";
 
 interface PaginationProps {
@@ -7,26 +7,24 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
-  currentPage,
-  totalPages,
-  onPageChange,
-}) => {
-  const handleChange = (_: React.ChangeEvent<unknown>, page: number) => {
-    onPageChange(page);
-  };
+const Pagination: React.FC<PaginationProps> = memo(
+  ({ currentPage, totalPages, onPageChange }) => {
+    const handleChange = (_: React.ChangeEvent<unknown>, page: number) => {
+      onPageChange(page);
+    };
 
-  return (
-    <Stack alignItems="center" spacing={1} sx={{ marginTop: "3rem" }}>
-      <MUIPagination
-        count={totalPages}
-        page={currentPage}
-        onChange={handleChange}
-        color="primary"
-        shape="rounded"
-      />
-    </Stack>
-  );
-};
+    return (
+      <Stack alignItems="center" spacing={1} sx={{ marginTop: "3rem" }}>
+        <MUIPagination
+          count={totalPages}
+          page={currentPage}
+          onChange={handleChange}
+          color="primary"
+          shape="rounded"
+        />
+      </Stack>
+    );
+  }
+);
 
 export default Pagination;
